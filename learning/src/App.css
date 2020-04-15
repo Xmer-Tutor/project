@@ -1,0 +1,148 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.nav-links{
+  width:40%;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  list-style: none;
+}
+
+.homepage-panel{
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  min-height:10vh;
+  background:  rgb(156, 156, 216);
+   /* //color: white; */
+}
+.input{
+  background-color: #fff;
+  /* border-color: #dbdbdb; */
+  border-color: rgb(228, 217, 217);
+  color: #363636;
+  box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+  max-width: 110%;
+  width: 110%;
+  /* border-radius:px; */
+  height: 20px;
+}
+
+button{
+  background-color: white;
+  border-radius: 10px;
+  padding: 3px;
+  font-weight: bold;
+  color: rgb(101, 160, 216);
+  font-size: 17px;
+  font-family: Arial;
+  cursor: pointer;
+  
+}
+
+.login-panel{
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  max-height: 400px;
+  text-align: center;
+  padding-top: 91px;
+}
+.login-user button{
+  padding: 11px;
+  border: 1px solid grey;
+}
+.user-name{
+	border: 3px solid grey;
+	padding: 1%;
+	font-weight: bold;
+	cursor: pointer;
+  border-radius: 10px;
+  margin: 5%;
+}
+.welcome-message{
+  font-weight: bold;
+  font-size: 25px;
+  color: rgb(140, 171, 216);
+}
+.header{
+  display: flex;
+  flex-direction: column;
+}
+.alert-message{  
+  text-align: center;
+}
+.welcome-header{
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  font-weight: bold;
+  padding-left: 50px;
+  font-size: 20px;
+  color: rgb(0, 81, 255);
+}
+.Application-header{
+  display: flex;
+  flex-direction: row;
+  color: white;    
+  background-color: rgb(156, 156, 216);
+  /* background-color: darkcyan; */
+  font-size: 10px;
+  position: fixed;
+  width: 100%;
+}
+.Application-header button {
+  color:inherit;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  cursor: pointer; 
+  background-color: rgb(156, 156, 216);
+  border-radius: 0;      
+}
+.company-info{
+  flex:8;
+  display: flex;
+  flex-direction: row;
+  font-family: Georgia;    
+}
+.navigation-header{
+  flex:3;
+  display: flex;
+  flex-direction: row; 
+  font-size: 15px;    
+  font-weight: bold;
+  padding: 0;
+  /* transition: transform .3s; */
+}
+.navigation-header button:hover{
+  background-color: rgb(168, 168, 241); 
+  -ms-transform: scale(1.1); 
+  -webkit-transform: scale(1.1); 
+  transform: scale(1.1);
+}
+.company-name{
+  padding-right: 7px;
+  padding-left: 7px;
+}
+.company-logo{
+  padding-left: 7px;
+  height:50px;
+  width:60px;
+  border-color: black;
+}
+.company-description{
+  padding-top: 5px;
+  font-style: italic;
+}
+
+body{
+  font-family: Arial;
+}
