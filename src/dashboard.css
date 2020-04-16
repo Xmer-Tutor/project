@@ -1,0 +1,21 @@
+.dashboard {
+    padding: 50px;
+}
+
+.dashboard > .courseRow > div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.dashboard > .courseRow > div::after {
+    content: "";
+    flex: auto;
+}
+
+.dashboard > .courseRow > div > img {
+    flex: 1 1 1px;
+    max-width: 250px;
+    border-radius: 5px;
+    margin: 15px;
+}

@@ -1,0 +1,19 @@
+.login-panel{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 91px;
+
+  align-items: center;
+}
+
+.login-panel > * {
+    margin: 0 5px;
+}
+
+.login-panel button{
+  border: 1px solid grey;
+}
