@@ -5,22 +5,29 @@ import './App.css';
 import Login from './Login';
 import Header from './Header';
 import Dashboard from './Dashboard';
+import CourseList from './CourseList';
 
 import {
     fetchIsLoggedIn,
     fetchLogin,
     fetchLogout,
 
-    fetchCourses
+    fetchCourses,
+
+    fetchAddToCart,
+    fetchCheckout
 } from './api';
+import Cart from './Cart';
 
 const App = () => {
 		const [ username, setUsername ] = useState('');
         const [ isLoggedIn, login ] = useState(false);
         const [ courses, setCourses ] = useState([]);
+        const [ cart, setCart ] = useState([]);
         
         const user = {
-            username
+            username,
+            cart
         };
 
         useEffect(() => {
@@ -34,6 +41,7 @@ const App = () => {
         const onLoginSuccess = ({ data }) => {
             setUsername(data.username);
             login(true);
+            setCart(data.cart);
 
             return '/dashboard';
         }
@@ -45,7 +53,18 @@ const App = () => {
         const logout = () => fetchLogout().then(() => {
             setUsername('');
             login(false);
+            setCart([]);
         });
+
+        const addToCart = id => {
+            setCart([...cart, id]);
+            fetchAddToCart(id);
+        };
+
+        const checkout = () => {
+            fetchCheckout()
+                .then(onLoginSuccess);
+        }
 
 		const routes = [(
             <Route
@@ -65,11 +84,24 @@ const App = () => {
                 (
                     <Route
                         exact
-                        key='dashboard'
-                        path='/dashboard'
-                    >
-                        <Dashboard courses={ courses } />
-                    </Route>
+                        key='courseType'
+                        path='/courseType/:typeIndex'
+                        render={({ match } ) => {
+                            const { params: { typeIndex }} = match
+                            const courseType = courses[typeIndex];
+                            if(!courseType) {
+                                return;
+                            }
+
+                            return (
+                                <CourseList
+                                    addToCart={addToCart}
+                                    courseType={courseType}
+                                    disabled={cart}
+                                />
+                            )
+                        }}
+                    />
                 ),
                 (
                     <Route
@@ -77,9 +109,22 @@ const App = () => {
                         key='cart'
                         path='/cart'
                     >
-
+                        <Cart
+                            cartItems={cart}
+                            checkout={checkout}
+                            courses={courses}
+                        />
                     </Route>
-                )
+                ),
+                (
+                    <Route
+                        exact
+                        key='dashboard'
+                        path='/dashboard'
+                    >
+                        <Dashboard courses={ courses } />
+                    </Route>
+                ),
             )
 		}
 

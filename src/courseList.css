@@ -1,0 +1,27 @@
+.courseType {
+    padding: 50px;
+}
+
+.courseType > .courseRows {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.courseType > .courseRows::after {
+    content: '';
+    flex: auto;
+}
+
+.courseType > .courseRows > .course {
+    margin: 50px;
+    text-align: center;
+}
+
+.courseType > .courseRows > .course > * {
+    margin: 5px;
+}
+
+.courseType > .courseRows > .course > img {
+    width: 300px;
+}

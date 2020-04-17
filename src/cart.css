@@ -1,0 +1,11 @@
+.cart {
+    padding: 50px;
+}
+
+.cart > .type > .row {
+    display: flex;
+}
+
+.cart > .type > .row > div {
+    margin: 0 10px;
+}

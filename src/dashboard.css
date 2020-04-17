@@ -1,21 +1,22 @@
 .dashboard {
     padding: 50px;
-}
-
-.dashboard > .courseRow > div {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.dashboard > .courseRow > div::after {
-    content: "";
-    flex: auto;
+.dashboard > .courseType {
+    margin: 50px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
 }
 
-.dashboard > .courseRow > div > img {
-    flex: 1 1 1px;
-    max-width: 250px;
-    border-radius: 5px;
-    margin: 15px;
+.dashboard > .courseType:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.dashboard > .courseType > img {
+    width: 300px;
 }

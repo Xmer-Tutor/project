@@ -1,4 +1,5 @@
 const sessionManager = require('./sessionManager');
+const userManager = require('./userManager');
 const courses = require('./courses');
 
 const sessionRoutes = {
@@ -41,7 +42,28 @@ const courseRoutes = {
     }
 }
 
+const cartRoutes = {
+    addToCart: ( req, res ) => {
+        const sid = req.cookies.sid;
+        const id = req.params.id;
+        const ses = sessionManager.getSession(sid);
+
+        userManager.addToCart(ses.username, id)
+        res.sendStatus(200);
+    },
+    
+    checkout: ( req, res ) => {
+        const sid = req.cookies.sid;
+        const ses = sessionManager.getSession(sid);
+
+        const user = userManager.checkout(ses.username)
+        res.status(200)
+            .json({ data: user });
+    }
+}
+
 module.exports = {
     courses: courseRoutes,
-    session: sessionRoutes
+    session: sessionRoutes,
+    cart: cartRoutes
 }

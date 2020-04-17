@@ -1,34 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './dashboard.css';
 
-const Dashboard = ({ courses }) => {
-    console.log({courses})
+const Dashboard = ({ courses: courseList }) => {
+    const rows = courseList.map(({ type, courses }, idx) => {
+        const imgUrl = `https://img.youtube.com/vi/${courses[0].id}/0.jpg`;
 
-    const rows = courses.map(({ type, videos }) => (
-        <div
-            key={type}
-            className='courseRow'
-        >
-            <h3>
-                {type}
-            </h3>
+        return (
+            <Link
+                key={type}
+                className='courseType'
+                to={`/courseType/${idx}`}
+            >
+                <img
+                    alt='thumbnail'
+                    src={imgUrl}
+                />
 
-            <div>
-                {videos.map(video => {
-                    const imgUrl = `https://img.youtube.com/vi/${video}/0.jpg`;
-                    return (
-                        <img
-                            alt='thumbnail'
-                            key={video}
-                            src={imgUrl}
-                        />
-                    )
-                })}
-            </div>
-
-            <hr />
-        </div>
-    ));
+                <h3>
+                    {type}
+                </h3>
+            </Link>
+        )
+    });
 
     return (
         <div className='dashboard'>
