@@ -7,7 +7,7 @@ const LoginPanel = ({ loginUser, user }) => {
     const [ redirect, setRedirect ] = useState();
 
     const changeUsername = ({ target: { value }}) => setUsername(value);
-    const login = () => loginUser(username).then(redirectPath => setRedirect(redirectPath));
+    const login = () => loginUser(username).then(setRedirect);
 
     if(redirect) {
         return (

@@ -31,3 +31,12 @@
 .Application-header > div ~ div {
     justify-content: flex-end;
 }
+
+.Application-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.Application-header a:visited {
+    color: white;
+}

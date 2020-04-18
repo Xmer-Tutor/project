@@ -1,7 +1,7 @@
 import React from 'react';
 import './cart.css';
 
-const Cart = ({ cartItems, checkout, courses }) => {
+const Cart = ({ cartItems, checkout, courses, removeFromCart }) => {
     const cartRows = courses.reduce((list, type) => {
         const selected = type.courses.filter(({ id }) => cartItems.indexOf(id) >= 0);
 
@@ -25,6 +25,11 @@ const Cart = ({ cartItems, checkout, courses }) => {
                     <div>
                         ${price}
                     </div>
+                    <button
+                        onClick={() => removeFromCart(id)}
+                    >
+                        Remove from cart
+                    </button>
                 </div>
             ))}
         </div>

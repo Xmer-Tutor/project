@@ -2,8 +2,6 @@ import React from 'react';
 import './courseList.css';
 
 const CourseList = ({ addToCart, courseType, disabled }) => {
-    console.log({disabled})
-
     const rows = courseType ? courseType.courses.map(course => {
         const imgUrl = `https://img.youtube.com/vi/${course.id}/0.jpg`;
         const isDisabled = disabled.indexOf(course.id) >= 0;
@@ -27,12 +25,16 @@ const CourseList = ({ addToCart, courseType, disabled }) => {
                 <div>
                     Price: ${course.price}
                 </div>
-                {!isDisabled && (
+                {!isDisabled ? (
                     <button
                         onClick={() => {addToCart(course.id)}}
                     >
                         Add to Cart
                     </button>
+                ) : (
+                    <div>
+                        Already in Cart / Purchased
+                    </div>
                 )}
             </div>
         )

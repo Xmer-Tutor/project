@@ -51,6 +51,15 @@ const cartRoutes = {
         userManager.addToCart(ses.username, id)
         res.sendStatus(200);
     },
+
+    removeFromCart: ( req, res ) => {
+        const sid = req.cookies.sid;
+        const id = req.params.id;
+        const ses = sessionManager.getSession(sid);
+
+        userManager.removeFromCart(ses.username, id)
+        res.sendStatus(200);
+    },
     
     checkout: ( req, res ) => {
         const sid = req.cookies.sid;

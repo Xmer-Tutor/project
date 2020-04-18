@@ -16,7 +16,15 @@ const create = username => {
 }
 
 const invalidSession = sid => !sid || !sessions[sid]
-const getSession = sid => sessions[sid];
+const getSession = sid => {
+    const session = sessions[sid];
+    const user = userManager.getUser(session.username);
+
+    return {
+        ...session,
+        ...user
+    }
+}
 
 const clear = sid => delete sessions[sid];
 

@@ -1,5 +1,5 @@
 export const fetchIsLoggedIn = () => {
-		return fetch('/_api/session', {
+		return fetch('/session', {
 			method: 'GET',
 			headers: new Headers({
 				'content-type': 'application/json',
@@ -18,7 +18,7 @@ export const fetchIsLoggedIn = () => {
 };
 
 export const fetchLogin = (username) => {
-		return fetch('/_api/session', {
+		return fetch('/session', {
 			method: 'POST',
 			headers: new Headers({
 				'content-type': 'application/json',
@@ -38,7 +38,7 @@ export const fetchLogin = (username) => {
 };
 
 export const fetchLogout = () => {
-		return fetch('/_api/session', {
+		return fetch('/session', {
 			method: 'DELETE',
 			headers: new Headers({
 				'content-type': 'application/json',
@@ -57,7 +57,7 @@ export const fetchLogout = () => {
 };
 
 export const fetchCourses = () => {
-		return fetch('/_api/courses', {
+		return fetch('/courses', {
 			method: 'GET',
 			headers: new Headers({
 				'content-type': 'application/json',
@@ -76,7 +76,7 @@ export const fetchCourses = () => {
 }
 
 export const fetchAddToCart = id => {
-	return fetch(`/_api/cart/${id}`, {
+	return fetch(`/cartApi/${id}`, {
         method: 'PUT',
         headers: new Headers({
             'content-type': 'application/json',
@@ -94,8 +94,27 @@ export const fetchAddToCart = id => {
     });
 }
 
+export const fetchRemoveFromCart = id => {
+	return fetch(`/cartApi/${id}`, {
+        method: 'DELETE',
+        headers: new Headers({
+            'content-type': 'application/json',
+        })
+    })
+    .catch( () => {
+        return Promise.reject({code: 'network-error'});
+    })
+    .then( (response) => {
+            
+        if(!response.ok) {
+            return response.json().then( result => Promise.reject(result) );
+        }
+        return;
+    });
+}
+
 export const fetchCheckout = () => {
-	return fetch('/_api/cart/checkout', {
+	return fetch('/cartApi/checkout', {
         method: 'GET',
         headers: new Headers({
             'content-type': 'application/json',
