@@ -26,7 +26,6 @@ const addToCart = (username, id) => {
 const removeFromCart = (username, id) => {
     const cart = users[username].cart;
     users[username].cart = [...cart.filter(item => item !== id)];
-    console.log({cart: users[username].cart, id})
     return cart;
 };
 
