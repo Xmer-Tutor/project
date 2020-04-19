@@ -1,5 +1,9 @@
-.login-panel{
-  display: flex;
+.error {
+  color: red;
+  display: block;;
+}
+
+.login-panel {
   flex-direction: row;
   text-align: center;
 
@@ -10,10 +14,21 @@
   align-items: center;
 }
 
-.login-panel > * {
+.login-panel > div {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+
+  max-width: 500px;
+  margin: 0 auto;
+
+  align-items: center;
+}
+
+.login-panel > div > * {
     margin: 0 5px;
 }
 
-.login-panel button{
+.login-panel > div > button{
   border: 1px solid grey;
 }

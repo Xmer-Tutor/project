@@ -59,6 +59,7 @@ const App = () => {
         setUsername('');
         login(false);
         setCart([]);
+        return '/';
     });
 
     const addToCart = id => {
@@ -72,8 +73,9 @@ const App = () => {
     }
 
     const checkout = () => {
-        fetchCheckout()
-            .then(onLoginSuccess);
+        fetchCheckout();
+        setPurchased([...purchased, ...cart]);
+        setCart([]);
     }
 
     const routes = [(

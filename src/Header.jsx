@@ -35,9 +35,14 @@ const Header = ({ user, logout }) => {
                     <h2>
                         {user.username}
                     </h2>
-                    <button onClick={logout}>
-                        Logout
-                    </button>
+                    <Link
+                        onClick={logout}
+                        to='/'
+                    >
+                        <button>
+                            Logout
+                        </button>
+                    </Link>
                 </div>
             )}
         </div>

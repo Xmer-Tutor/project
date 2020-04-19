@@ -1,4 +1,5 @@
 const sessionManager = require('./sessionManager');
+const auth = require('./auth');
 const userManager = require('./userManager');
 const courses = require('./courses');
 
@@ -19,6 +20,11 @@ const sessionRoutes = {
     
     login: ( req, res ) => {
         const username = req.body.username;
+        if(!auth(username)) {
+            res.status(401)
+                .json({ data: 'Invalid Username' });
+            return;
+        }
         const session = sessionManager.create(username);
         res.cookie('sid', session.sid);
 
